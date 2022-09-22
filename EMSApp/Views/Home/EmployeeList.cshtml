@@ -1,0 +1,35 @@
+﻿@using EMSApp.Models
+@model List<Employee>
+@{
+    ViewBag.Title = "EmployeeList";
+}
+
+<h2>EmployeeList</h2>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@item.Name - @item.Age</li>
+    }
+</ul>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Age</td>
+            </tr>
+        }
+    </tbody>
+
+
+</table>
+

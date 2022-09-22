@@ -1,0 +1,44 @@
+﻿@using EMSApp.Models
+@model Employee
+@{
+    ViewBag.Title = "Register";
+
+    List<Department> departments = (List<Department>)ViewBag.Departments;
+}
+
+<h2>Register</h2>
+
+<form class="form-horizontal" action="/Home/Register" method="post">
+    <div class="form-group row">
+        @Html.LabelFor(x => x.Name, new { @class = "col-md-2" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+
+        </div>
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(x => x.Age, new { @class = "col-md-2" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(x => x.Age, new { @class = "form-control", type = "number" })
+        </div>
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(x => x.DepartmentId, new { @class = "col-md-2" })
+        <div class="col-md-4">
+            @*<select class="form-control" id="DepartmentId" name="DepartmentId">
+                <option>Select Department</option>
+                @foreach (var item in departments)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>*@
+            @Html.DropDownListFor(x => x.DepartmentId, new SelectList(departments, "Id", "Name"), "--Select Department--", new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-6">
+            <button type="submit">Register</button>
+        </div>
+    </div>
+</form>
+
