@@ -5,9 +5,9 @@ using System.Web;
 
 namespace EMSApp.Models
 {
-    public class Result
+    public class DepartmentViewModel
     {
-        public Employee Employee { get; set; }
-        public Department Department { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

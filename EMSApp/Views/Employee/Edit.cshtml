@@ -1,0 +1,55 @@
+﻿@model EMSApp.EntityModels.Employee
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@if (ViewBag.Error != null)
+{
+
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+<form class="form-horizontal" action="Edit" method="post">
+    @Html.HiddenFor(x => x.Id)
+    @Html.HiddenFor(x => x.IsActive)
+    @Html.HiddenFor(x => x.DateCreated)
+    <div class="form-group row">
+        @Html.LabelFor(x => x.Email, new { @class = "col-md-2" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(x => x.Email, new { @class = "form-control", type = "email" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(x => x.Phone, new { @class = "col-md-2" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(x => x.Salary, new { @class = "col-md-2" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(x => x.Salary, new { @class = "form-control", type = "number" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(x => x.Address, new { @class = "col-md-2" })
+        <div class="col-md-4">
+            @Html.TextAreaFor(x => x.Address, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+
+        <div class="col-md-offset-2 col-md-4">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>
+
+<a href="@Url.Action("Index","Employee")">Employee List</a>

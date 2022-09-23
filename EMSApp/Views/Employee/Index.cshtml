@@ -1,0 +1,48 @@
+﻿@model List<EMSApp.EntityModels.Employee>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Employees</h2>
+
+<p>
+    <a class="btn btn-primary" href="@Url.Action("Create","Employee")">Add Employee</a>
+</p>
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Salary</th>
+            <th>Address</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count == 0)
+        {
+            <tr>
+                <td colspan="5"><center class="alert alert-danger">No record found</center></td>
+            </tr>
+        }
+        else
+        {
+            foreach (var employee in Model)
+            {
+                <tr>
+                    <td>@employee.Email</td>
+                    <td>@employee.Phone</td>
+                    <td>@employee.Salary</td>
+                    <td>@employee.Address</td>
+                    <td>
+                        <a class="btn btn-warning btn-sm" href="@Url.Action("Edit", "Employee", new { id = EMSApp.Helper.Encrypt(employee.Id) })">Edit</a>
+                        <a class="btn btn-danger btn-sm" href="@Url.Action("Delete", "Employee", new { id = EMSApp.Helper.Encrypt( employee.Id) })">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+
+
